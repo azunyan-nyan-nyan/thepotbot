@@ -68,6 +68,25 @@ def generate_launch_description():
         )
     )
 
+    ldlidar = Node(
+      package='ldlidar_sl_ros2',
+      executable='ldlidar_sl_ros2_node',
+      name='ldlidar_publisher_ld14',
+      output='screen',
+      parameters=[
+        {'product_name': 'LDLiDAR_LD14'},
+        {'laser_scan_topic_name': 'scan'},
+        {'point_cloud_2d_topic_name': 'pointcloud2d'},
+        {'frame_id': 'base_laser'},
+        {'port_name': '/dev/ttyUSB0'},
+        {'serial_baudrate' : 115200},
+        {'laser_scan_dir': True},
+        {'enable_angle_crop_func': False},
+        {'angle_crop_min': 135.0},
+        {'angle_crop_max': 225.0}
+      ]
+    )
+
 
     # Code for delaying a node (I haven't tested how effective it is)
     # 
@@ -90,6 +109,7 @@ def generate_launch_description():
     # Launch them all!
     return LaunchDescription([
         rsp,
+        ldlidar,
         delayed_controller_manager,
         delayed_diff_drive_spawner,
         delayed_joint_broad_spawner

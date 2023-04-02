@@ -120,11 +120,11 @@
 
     <joint name="laser_joint" type="fixed">
         <parent link="chassis"/>
-        <child link="laser_frame"/>
+        <child link="base_laser"/>
         <origin xyz="0 0 ${ratio*(chassis_height+1.00)/2}" rpy="0 0 0"/>
     </joint>
 
-    <link name="laser_frame">
+    <link name="base_laser">
         <visual>
             <geometry>
                 <cylinder radius="${2.3125*ratio}" length="${1.00*ratio}"/>
@@ -149,10 +149,10 @@
             <material name="blue"/>
         </visual>
     </link>
-
+<!--
     <joint name="valve_joint" type="revolute">
         <parent link="valve_frame"/>
-        <child link="valve"/>
+        <child link="valve_front"/>
         <origin xyz="0 0 ${ratio*(chassis_length/2+0.25)}" rpy="0 ${pi/2} 0"/>
         <axis xyz="-1 0.0 0.0"/>
         <limit lower="0.0" upper="${pi/2}" effort="100" velocity="100"/>
@@ -160,7 +160,7 @@
         
     </joint>
 
-    <link name="valve">
+    <link name="valve_front">
         <visual>
             <geometry>
                 <cylinder radius="${0.5*ratio}" length="${valve_radius*2*ratio}"/>
@@ -168,6 +168,6 @@
             <material name="green"/>
         </visual>
     </link>
-
+-->
 
 </robot>
